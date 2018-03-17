@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<context:annotation-config />
+	<task:annotation-driven/> 
+	
+	<context:component-scan base-package="share.all.controller"/>
+	<context:component-scan base-package="share.all.service"/>
+	
+	<mvc:annotation-driven/>
+	
+	<!-- Tiles 설정하기 -->
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/spring/appServlet/Tiles.xml</value>
+			</list>
+		</property>
+	</bean>
+	<!-- Tiles 관련 Resolver 구성 -->
+	<bean id="urlBasedViewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles2.TilesView" />
+	</bean>
+	
+	<!-- 트랜잭션 클래스 생성 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="driverManagerDataSource" />
+	</bean>
+
+	<!-- @Transactional 적용된 곳에 (commit , rollback 관리) -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- 웹소켓 -->
+<!-- 	<bean id="echoHandler" class="kr.or.kosta.ws.EchoHandler"/>
+	<websocket:handlers>
+	    <websocket:mapping handler="echoHandler" path="/echo.htm" />
+	    <websocket:sockjs />
+	</websocket:handlers>
+	 -->
+   <!-- 메세지 출력을 위한 클래스 -->
+<!--    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+      <property name="basenames">
+         <list>
+            <value>message.label</value>
+         </list>
+      </property>
+      <property name="defaultEncoding" value="UTF-8" />
+   </bean> -->
+   
+   <!-- 메일발송 클래스 -->
+<!--    <bean id="simpleNotifier" class="kr.or.kosta.email.MailSender" />
+   
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+      <property name="velocityProperties">
+         <value>
+            resource.loader=class
+            class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+         </value>
+      </property>
+   </bean>  -->
+	
+</beans>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:tx="http://www.springframework.org/schema/tx"
+ xmlns:mvc="http://www.springframework.org/schema/mvc"
+ xmlns:security="http://www.springframework.org/schema/security"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                     http://www.springframework.org/schema/beans/spring-beans.xsd
+                     http://www.springframework.org/schema/context
+					http://www.springframework.org/schema/context/spring-context.xsd
+					http://www.springframework.org/schema/mvc
+					http://www.springframework.org/schema/mvc/spring-mvc.xsd
+  					 http://www.springframework.org/schema/security 
+  					 http://www.springframework.org/schema/security/spring-security.xsd
+  					  http://www.springframework.org/schema/tx 
+  					 http://www.springframework.org/schema/tx/spring-tx.xsd
+  					 ">
+  					 
+  					 
+ <!-- 
+	hasRole() = hasAuthority()
+	access="permitAll" 은 누구나 접근 가능하다는 것을 의미.
+ -->
+  					 
+
+ <security:http use-expressions="true">
+	   <security:csrf disabled="true" />
+  		<security:intercept-url pattern="/**" access="permitAll" />
+	    <security:form-login 
+	    	login-page="/login.sanote"
+	    	authentication-failure-url="/login.sanote?error"
+	    	authentication-success-handler-ref="loginSuccessHandler"
+	    />
+	    <security:logout logout-success-url="/hhome.sanote" logout-url="/logout.sanote" invalidate-session="true"/>       
+	</security:http>
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:jdbc-user-service 
+			data-source-ref="driverManagerDataSource"
+ 			users-by-username-query="SELECT id as username, password as password, 1 as enabled FROM member WHERE id=?"
+ 			authorities-by-username-query="SELECT id as username, role as authority FROM member WHERE id=?" />
+			<!-- <security:password-encoder ref="bCryptPasswordEncoder"/>  -->
+		</security:authentication-provider>
+	</security:authentication-manager>
+	<bean id="loginSuccessHandler" class="share.all.handler.LoginSuccessHandler"></bean>	 
+
+ </beans>
