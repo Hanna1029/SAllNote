@@ -40,7 +40,7 @@
 			data-source-ref="driverManagerDataSource"
  			users-by-username-query="SELECT id as username, password as password, 1 as enabled FROM member WHERE id=?"
  			authorities-by-username-query="SELECT id as username, role as authority FROM member WHERE id=?" />
-			<!-- <security:password-encoder ref="bCryptPasswordEncoder"/>  -->
+			<security:password-encoder ref="bCryptPasswordEncoder"/>
 		</security:authentication-provider>
 	</security:authentication-manager>
 	<bean id="loginSuccessHandler" class="share.all.handler.LoginSuccessHandler"></bean>	 

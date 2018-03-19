@@ -5,8 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="share.all.dao.MemberDao">
 
-	<insert id="register Member">
-		
+	<insert id="registerMember">
+		insert into member 
+		values(#{id}, #{name}, #{password}, 'oo', 0, 'ROLE_USER')
 	</insert>
 
 

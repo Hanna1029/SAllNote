@@ -19,17 +19,15 @@
 						<div class="card-body">
 							<h4 class="card-title">Register</h4>
 							<form method="POST">
-							 
+								<div class="form-group">
+									<label for="email">E-Mail Address()</label>
+									<input id="email" type="email" class="form-control" name="id" required>
+								</div>
+
 								<div class="form-group">
 									<label for="name">Name</label>
 									<input id="name" type="text" class="form-control" name="name" required autofocus>
 								</div>
-
-								<div class="form-group">
-									<label for="email">E-Mail Address</label>
-									<input id="email" type="email" class="form-control" name="id" required>
-								</div>
-
 								<div class="form-group">
 									<label for="password">Password</label>
 									<input id="password" type="password" class="form-control" name="password" required data-eye>

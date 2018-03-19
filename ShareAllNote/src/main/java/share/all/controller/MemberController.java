@@ -37,6 +37,7 @@ public class MemberController {
 	@RequestMapping(value = "register.sanote", method = RequestMethod.POST)
 	public String registerSuccess(Member member) {
 
+		memberservice.registerMember(member);
 		return "home.index";
 	}
 
