@@ -1,54 +1,19 @@
 package share.all.dto;
 
-/*
-	작성일 : 2018.03.14
-	작성자 : 존잘남
-	제   목 : 회원가입 정보를 위한 Member DTO 
-*/
 
 public class Member {
-	private String id;
-	private String password;
-	private String name;
-	private String profile_img;
-	private int onoff;
-	private String role;
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getProfile_img() {
-		return profile_img;
-	}
-	public void setProfile_img(String profile_img) {
-		this.profile_img = profile_img;
-	}
-	public int getOnoff() {
-		return onoff;
-	}
-	public void setOnoff(int onoff) {
-		this.onoff = onoff;
-	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
+	
+	private String id; // 아이디
+	private String password; // 비밀번호
+	private String name; // 이름
+	private String profile_img; // 프로필사진
+	private int onoff; // 접속여부
+	private String role; // 권한
+	private String friend_id; // 친구아이디 타입 알아서
+	private int g_num; // 가입한 그룹(타입알아서)
+	
+	
+	
 	
 	
 }
