@@ -21,10 +21,30 @@ public class MemberService {
 		
 		// 비밀번호 암호화해서 다시 set
 		member.setPassword(this.bCryptPasswordEncoder.encode(member.getPassword()));
-		
+		member.setProfile_img("/resources/img/logo.jpg");
 		MemberDao dao = session.getMapper(MemberDao.class);
 		dao.registerMember(member);
 		
+	}
+	
+	public Member getMember(String id) {
+		MemberDao dao = session.getMapper(MemberDao.class);
+		Member member = dao.getMember(id);
+		return member;
+	}
+	
+	public void changeProfile(String id, String fpath2) {
+		
+		MemberDao dao = session.getMapper(MemberDao.class);
+		dao.changeProfile(id, fpath2);
+		
+	}
+	
+	public void changePwd(String id, String password) {
+		
+		String pwd = bCryptPasswordEncoder.encode(password);
+		MemberDao dao = session.getMapper(MemberDao.class);
+		dao.changePwd(id, pwd);
 	}
 
 }

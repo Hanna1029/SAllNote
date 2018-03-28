@@ -7,8 +7,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="registerMember">
 		insert into member 
-		values(#{id}, #{name}, #{password}, 'oo', 0, 'ROLE_USER')
+		values(#{id}, #{name}, #{password}, #{profile_img}, 0, 'ROLE_USER')
 	</insert>
+	
+	<select id="getMember" resultType="share.all.dto.Member">
+		select id, name, profile_img from member where id=#{id}
+	</select>
 
-
+	<update id="changeProfile">
+		update member
+		set profile_img = #{param2}
+		where id=#{param1}
+	</update>
+	
+	<update id="changePwd">
+		update member
+		set password = #{param2}
+		where id=#{param1}
+	</update>
 </mapper>

@@ -6,6 +6,8 @@
 <head>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/my-login.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 </head>
 <body class="my-login-page">
 	<section class="h-100">
@@ -13,7 +15,7 @@
 			<div class="row justify-content-md-center h-100">
 				<div class="card-wrapper">
 					<div class="brand">
-						<img src="img/logo.jpg">
+						<img src="${pageContext.request.contextPath}/resources/img/logo.jpg">
 					</div>
 					<div class="card fat">
 						<div class="card-body">

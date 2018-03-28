@@ -31,6 +31,9 @@
 							<i class="material-icons">content_paste</i>
 							<p>로그아웃<p>
 						</a>
+						<a href="mypage.sanote">
+							<p>마이페이지</p>
+						</a>
 					<li>
 					</se:authorize>
 					

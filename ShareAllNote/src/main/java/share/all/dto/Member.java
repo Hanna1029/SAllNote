@@ -1,6 +1,8 @@
 package share.all.dto;
 
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class Member {
 	
 	private String id; // 아이디
@@ -11,6 +13,16 @@ public class Member {
 	private String role; // 권한
 	private String friend_id; // 친구아이디 타입 알아서
 	private int g_num; // 가입한 그룹(타입알아서)
+	
+	private CommonsMultipartFile file; // 프로필사진 업로드
+	
+	
+	public CommonsMultipartFile getFile() {
+		return file;
+	}
+	public void setFile(CommonsMultipartFile file) {
+		this.file = file;
+	}
 	public String getId() {
 		return id;
 	}
