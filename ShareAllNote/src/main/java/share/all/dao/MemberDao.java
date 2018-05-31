@@ -1,5 +1,8 @@
 package share.all.dao;
 
+import java.util.List;
+
+import share.all.dto.HanGang;
 import share.all.dto.Member;
 
 public interface MemberDao {
@@ -15,4 +18,7 @@ public interface MemberDao {
 	
 	// 비밀번호 변경
 	public void changePwd(String id, String password);
+	
+	// jsonData insert
+	public void insertJsonData(List<HanGang> hanlist);
 }

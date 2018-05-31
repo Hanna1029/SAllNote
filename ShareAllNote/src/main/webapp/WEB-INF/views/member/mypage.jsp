@@ -21,11 +21,12 @@ function changePwd(){
 	var _data = JSON.stringify(pwd); */
         $.ajax({
 			type : "POST",
-			url : "pwdUpdate.sanote",
+			url : "${pageContext.request.contextPath}/pwdUpdate.sanote",
 			data : "password="+$('#pwd').val(),
-			contentType : "application/json; charset=UTF-8",
-			dataType : "json",
+			/* contentType : "application/json; charset=UTF-8", */
+			/* dataType : "json", */
 			success : function(data) { //callback  
+				$('#hidden_pwdform').css('display','none');
 				alert('비밀번호가 변경되었습니다~~~');
 			}
 		});
@@ -41,10 +42,10 @@ $(function () {
         
         $.ajax({
 			type : "POST",
-			url : "profileChange.sanote",
+			url : "${pageContext.request.contextPath}/profileChange.sanote",
 			data :  "file="+this.files[0],
-			contentType : "application/json; charset=UTF-8",
-			dataType : "json",
+			/* contentType : "application/json; charset=UTF-8", */
+			/* dataType : "json", */
 			success : function(data) { //callback  
 				readURL(this);
 				alert('프로필사진이 변경되었습니다~~~');

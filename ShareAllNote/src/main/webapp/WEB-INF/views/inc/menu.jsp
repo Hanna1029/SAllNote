@@ -46,7 +46,18 @@
 						<i class="material-icons">notifications</i>
 							<p>회원가입<p>
 						</a>	
-					
+						<a href="jsonpage.sanote">
+							<i class="material-icons">location_on</i>
+							<p>제이슨가즈아<p>
+						</a>
+						<a href="goWeather.sanote">
+							<i class="material-icons">location_on</i>
+							<p>날씨<p>
+						</a>
+						<a href="goChatting.sanote">
+							<i class="material-icons">location_on</i>
+							<p>채팅<p>
+						</a>
 					</se:authorize>
 					
 					<li><a href="./typography.html"> <i class="material-icons">library_books</i>

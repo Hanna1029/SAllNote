@@ -25,4 +25,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set password = #{param2}
 		where id=#{param1}
 	</update>
+	
+	<insert id="insertJsonData">
+	
+	
+	
+	</insert>
 </mapper>

@@ -48,12 +48,10 @@
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	
 	<!-- 웹소켓 -->
-<!-- 	<bean id="echoHandler" class="kr.or.kosta.ws.EchoHandler"/>
+ 	<bean id="chatwebsockethandler" class="share.all.handler.ChatWebSocketHandler"/>
 	<websocket:handlers>
-	    <websocket:mapping handler="echoHandler" path="/echo.htm" />
-	    <websocket:sockjs />
+	    <websocket:mapping handler="chatwebsockethandler" path="/webchat*" />
 	</websocket:handlers>
-	 -->
    <!-- 메세지 출력을 위한 클래스 -->
 <!--    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
       <property name="basenames">

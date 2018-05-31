@@ -6,19 +6,26 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.View;
 
+import share.all.dto.HanGang;
 import share.all.dto.Member;
 import share.all.service.MemberService;
 
@@ -99,13 +106,45 @@ public class MemberController {
 	}
 	// 마이페이지에서 비밀번호변경 비동기
 	@RequestMapping(value="pwdUpdate.sanote", method=RequestMethod.POST)
-	public View pwdChange(@RequestParam String password, Principal principal) {
+	public View pwdChange(String password, Principal principal) {
 		
 		String id = principal.getName();
 		System.out.println("pwd : " + password);
 		memberservice.changePwd(id, password);
 		
 		return jsonview;
+	}
+	
+	// openAPI 비동기로 디비에 insert
+	@RequestMapping(value="gogogoDB.sanote", method=RequestMethod.POST)
+	public View gogoDB(@RequestBody ArrayList<HashMap<String, String>> JsonData, Model model) {
+		
+		System.out.println("sssss : " + JsonData.get(0).get("DONG"));
+		
+		/*for(int i=0; i<JsonData.size(); i++) {
+			HanGang h = new HanGang();
+			h = (HanGang) JsonData.get(i);
+			
+			System.out.println(h.toString());
+		}*/
+		
+		//memberservice.insertJsonData(hanlist);
+		model.addAttribute("seoul", JsonData);
+
+		
+		return jsonview;
+	}
+	
+	// JSON 테이블 페이지로 이동
+	@RequestMapping(value = "jsonpage.sanote", method = RequestMethod.GET)
+	public String goJsonPage() {
+
+		return "Json";
+	}
+	
+	@RequestMapping(value="goWeather.sanote", method = RequestMethod.GET)
+	public String goWeatherPage() {
+		return "weather";
 	}
 	
 	
